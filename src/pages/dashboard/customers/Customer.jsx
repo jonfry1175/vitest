@@ -13,7 +13,6 @@ import "./customers.css";
 import { useDispatch } from "react-redux";
 
 const Customer = () => {
-  const [customerData, setCustomerData] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);

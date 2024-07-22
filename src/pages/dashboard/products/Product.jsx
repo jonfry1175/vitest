@@ -94,7 +94,7 @@ const Product = () => {
   };
 
   const handleCreateProduct = (newProduct) => {
-    setProductData([...productData, newProduct]);
+    // setProductData([...productData, newProduct]);
     getProducts();
   };
 
