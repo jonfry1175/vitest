@@ -162,17 +162,17 @@ const Product = () => {
                     productData.map((product, index) => (
                       <tr key={index}>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-5">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {product.id ? product.id.slice(0, 8) : ""}
                           </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-5">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {product.name}
                           </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="danger  p-2 px-5">
+                          <Badge pill bg="danger  p-2 px-2">
                             {new Intl.NumberFormat("id-ID", {
                               style: "currency",
                               currency: "IDR",
@@ -180,7 +180,7 @@ const Product = () => {
                           </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-5">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {product.type}
                           </Badge>
                         </td>

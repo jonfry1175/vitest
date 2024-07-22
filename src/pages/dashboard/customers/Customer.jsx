@@ -154,22 +154,22 @@ const Customer = () => {
                     customerData.map((customer, index) => (
                       <tr key={index}>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-3">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {customer.id ? customer.id.slice(0, 8) : ""}
                           </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-5">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {customer.name}
                           </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-5">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {customer.phoneNumber}
                           </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary  p-2 px-5">
+                          <Badge pill bg="secondary  p-2 px-2">
                             {customer.address}
                           </Badge>
                         </td>
