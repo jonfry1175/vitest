@@ -114,7 +114,7 @@ const Transactions = () => {
       getTransactions();
       setShowModalCreate(false);
     } catch (error) {
-      if(error?.response?.data?.status?.description) {
+      if (error?.response?.data?.status?.description) {
         toast.error("Wajib Login Menggunakan Akun Admin");
       } else {
 
@@ -224,10 +224,12 @@ const Transactions = () => {
                       {transaction.billDetails.map((item) => item.product.name)}
                     </td>
                     <td>
-                      {transaction.billDetails.reduce(
-                        (acc, item) => acc + item.price * item.qty,
-                        0
-                      )}
+                      {transaction.billDetails
+                        .reduce((acc, item) => acc + item.price * item.qty, 0)
+                        .toLocaleString('id-ID', {
+                          style: 'currency',
+                          currency: 'IDR',
+                        })}
                     </td>
                   </tr>
                 ))}
