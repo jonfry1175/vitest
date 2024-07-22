@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import React, { useEffect } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 const customerFormSchema = z.object({
-    id: z.string().trim().min(1, 'is required'),
-    name: z.string().trim().min(1, 'Name is required').max(100),
-    phoneNumber: z.string().min(1, 'Phone number is required'),
-    address: z.string().trim().min(1, 'Address is required').max(225)
+  id: z.string().trim().min(1, "is required"),
+  name: z.string().trim().min(1, "Name is required"),
+  phoneNumber: z.string().min(1, "Phone number is required"),
+  address: z.string().trim().min(1, "Address is required"),
 });
 
 const EditCustomerModal = ({ show, handleClose, customer, handleSave }) => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     resolver: zodResolver(customerFormSchema),
     defaultValues: {
       id: "",
@@ -51,7 +56,7 @@ const EditCustomerModal = ({ show, handleClose, customer, handleSave }) => {
             <Form.Control
               data-testid="customer-modal-name-input"
               type="text"
-              {...register('name')}
+              {...register("name")}
               isInvalid={!!errors.name}
             />
             <Form.Control.Feedback type="invalid">
@@ -63,7 +68,7 @@ const EditCustomerModal = ({ show, handleClose, customer, handleSave }) => {
             <Form.Control
               data-testid="customer-modal-phone-input"
               type="text"
-              {...register('phoneNumber')}
+              {...register("phoneNumber")}
               isInvalid={!!errors.phoneNumber}
             />
             <Form.Control.Feedback type="invalid">
@@ -75,7 +80,7 @@ const EditCustomerModal = ({ show, handleClose, customer, handleSave }) => {
             <Form.Control
               data-testid="customer-modal-address-input"
               type="text"
-              {...register('address')}
+              {...register("address")}
               isInvalid={!!errors.address}
             />
             <Form.Control.Feedback type="invalid">
@@ -83,10 +88,18 @@ const EditCustomerModal = ({ show, handleClose, customer, handleSave }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Modal.Footer>
-            <Button data-testid="customer-modal-close-button" variant="secondary" onClick={handleClose}>
+            <Button
+              data-testid="customer-modal-close-button"
+              variant="secondary"
+              onClick={handleClose}
+            >
               Close
             </Button>
-            <Button data-testid="customer-modal-submit" variant="primary" type="submit">
+            <Button
+              data-testid="customer-modal-submit"
+              variant="primary"
+              type="submit"
+            >
               Save Changes
             </Button>
           </Modal.Footer>

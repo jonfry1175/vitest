@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Modal, Button, Form } from "react-bootstrap";
 import { toast } from "sonner";
 import { axiosInstance } from "../../../lib/axios";
@@ -10,17 +10,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const customerFormSchema = z.object({
-    name: z.string().trim().min(1, 'Name is required').max(100),
-    phoneNumber: z.string().min(1, 'Phone number is required'),
-    address: z.string().trim().min(1, 'Address is required').max(225)
+  name: z.string().trim().min(1, "Name is required"),
+  phoneNumber: z.string().min(1, "Phone number is required"),
+  address: z.string().trim().min(1, "Address is required"),
 });
 
 const CreateCustomerModal = ({ show, handleClose, handleCreate }) => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     resolver: zodResolver(customerFormSchema),
     defaultValues: {
       name: "",
-      phoneNumber: "",  
+      phoneNumber: "",
       address: "",
     },
   });
@@ -32,12 +37,14 @@ const CreateCustomerModal = ({ show, handleClose, handleCreate }) => {
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      const response = await axiosInstance.post("/customers/", data, { headers });
+      const response = await axiosInstance.post("/customers/", data, {
+        headers,
+      });
       if (response.status === 201) {
         toast.success("Customer Created Successfully");
         handleCreate(response.data);
         reset();
-        handleClose(); 
+        handleClose();
       }
     } catch (error) {
       console.error(error);
@@ -89,10 +96,18 @@ const CreateCustomerModal = ({ show, handleClose, handleCreate }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Modal.Footer>
-            <Button data-testid="customer-modal-close-button" variant="secondary" onClick={handleClose}>
+            <Button
+              data-testid="customer-modal-close-button"
+              variant="secondary"
+              onClick={handleClose}
+            >
               Close
             </Button>
-            <Button data-testid="customer-modal-submit" variant="primary" type="submit">
+            <Button
+              data-testid="customer-modal-submit"
+              variant="primary"
+              type="submit"
+            >
               Create
             </Button>
           </Modal.Footer>

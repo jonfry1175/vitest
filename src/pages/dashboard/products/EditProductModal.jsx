@@ -1,19 +1,27 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Modal, Button, Form } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { Modal, Button, Form } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 const productFormSchema = z.object({
-  id: z.string().trim().min(1, 'is required'),
-  name: z.string().trim().min(1, 'Name is required').max(100),
-  price: z.preprocess((value) => parseFloat(value), z.number().min(1, 'Price is required')),
-  type: z.string().trim().min(1, 'Type is required').max(10),
+  id: z.string().trim().min(1, "is required"),
+  name: z.string().trim().min(1, "Name is required"),
+  price: z.preprocess(
+    (value) => parseFloat(value),
+    z.number().min(1, "Price is required")
+  ),
+  type: z.string().trim().min(1, "Type is required"),
 });
 
 const EditProductModal = ({ show, handleClose, product, handleSave }) => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     resolver: zodResolver(productFormSchema),
     defaultValues: {
       id: "",
@@ -50,7 +58,7 @@ const EditProductModal = ({ show, handleClose, product, handleSave }) => {
             <Form.Control
               data-testid="product-name-input"
               type="text"
-              {...register('name')}
+              {...register("name")}
               isInvalid={!!errors.name}
             />
             <Form.Control.Feedback type="invalid">
@@ -62,7 +70,7 @@ const EditProductModal = ({ show, handleClose, product, handleSave }) => {
             <Form.Control
               data-testid="product-price-input"
               type="number"
-              {...register('price')}
+              {...register("price")}
               isInvalid={!!errors.price}
             />
             <Form.Control.Feedback type="invalid">
@@ -74,7 +82,7 @@ const EditProductModal = ({ show, handleClose, product, handleSave }) => {
             <Form.Control
               data-testid="product-type-input"
               type="text"
-              {...register('type')}
+              {...register("type")}
               isInvalid={!!errors.type}
             />
             <Form.Control.Feedback type="invalid">
@@ -82,10 +90,18 @@ const EditProductModal = ({ show, handleClose, product, handleSave }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Modal.Footer>
-            <Button data-testid="close-add-product-modal" variant="secondary" onClick={handleClose}>
+            <Button
+              data-testid="close-add-product-modal"
+              variant="secondary"
+              onClick={handleClose}
+            >
               Close
             </Button>
-            <Button data-testid="submit-add-product" variant="primary" type="submit">
+            <Button
+              data-testid="submit-add-product"
+              variant="primary"
+              type="submit"
+            >
               Save Changes
             </Button>
           </Modal.Footer>
