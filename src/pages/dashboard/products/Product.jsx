@@ -55,7 +55,7 @@ const Product = () => {
   //   setShowDeleteModal(true);
   // };
 
-   const handleDeleteClick = (id) => {
+  const handleDeleteClick = (id) => {
     confirmAlert({
       customUI: ({ onClose }) => (
         <div className="bg-light p-4 rounded shadow justify-content-end mt-3 swal2-popup">
@@ -66,7 +66,7 @@ const Product = () => {
               className="btn btn-danger me-2"
               onClick={() => {
                 deleteProduct(id);
-                onClose()
+                onClose();
               }}
               data-testid="confirm-delete-button"
             >
@@ -75,15 +75,15 @@ const Product = () => {
             <Button
               className="bg-warning swal2-cancel"
               onClick={() => {
-                onClose()
+                onClose();
               }}
-              data-testid='cancel-delete-button'
+              data-testid="cancel-delete-button"
             >
               Cancel
             </Button>
           </div>
         </div>
-      )
+      ),
     });
   };
 
@@ -133,11 +133,17 @@ const Product = () => {
         </div>
         <div className="col">
           <div className="text-center container-fluid">
-            <h1 data-testid="product-title" className="text-center">Product</h1>
-            <Button data-testid="add-product-button" onClick={handleCreateClick} variant="primary">
+            <h1 data-testid="product-title" className="text-center">
+              Product
+            </h1>
+            <Button
+              data-testid="add-product-button"
+              onClick={handleCreateClick}
+              variant="primary"
+            >
               Add Product
             </Button>
-            <div className="table-responsive mt-3">
+            <div className="table-responsive mt-3 display: none">
               <Table>
                 <thead className="text-center">
                   <tr>
@@ -152,13 +158,15 @@ const Product = () => {
                   {productData && productData.length > 0 ? (
                     productData.map((product, index) => (
                       <tr key={index}>
-                        <td>{product.id ? product.id.slice(0, 8) : ''}</td>
+                        <td>{product.id ? product.id.slice(0, 8) : ""}</td>
                         <td>{product.name}</td>
                         <td>{product.price}</td>
                         <td>{product.type}</td>
                         <td>
                           <Button
-                            data-testid={`edit-product-button-${product.id ? product.id.slice(0, 8) : null }`}
+                            data-testid={`edit-product-button-${
+                              product.id ? product.id.slice(0, 8) : null
+                            }`}
                             onClick={() => handleEditClick(product)}
                             variant="success"
                             className="mx-2"
@@ -166,7 +174,9 @@ const Product = () => {
                             Edit
                           </Button>
                           <Button
-                            data-testid={`delete-product-button-${product.id ? product.id.slice(0, 8) : null }`}
+                            data-testid={`delete-product-button-${
+                              product.id ? product.id.slice(0, 8) : null
+                            }`}
                             onClick={() => handleDeleteClick(product.id)}
                             variant="danger"
                             className="mx-2"
@@ -181,7 +191,6 @@ const Product = () => {
                       <td colSpan="5">No products available</td>
                     </tr>
                   )}
-
                 </tbody>
               </Table>
             </div>
@@ -209,10 +218,9 @@ const Product = () => {
         handleClose={() => setShowDeleteModal(false)}
         handleDelete={() => deleteProduct(productIdDetele)}
       /> */}
-
     </div>
   );
 };
 
-const EnhancedProduct = withAuth(Product)
+const EnhancedProduct = withAuth(Product);
 export default EnhancedProduct;
