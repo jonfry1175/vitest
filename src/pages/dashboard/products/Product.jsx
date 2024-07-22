@@ -9,14 +9,16 @@ import EditProductModal from "./EditProductModal";
 import withAuth from "../../../hoc/withAuth";
 import { useSelector } from "react-redux";
 import { confirmAlert } from "react-confirm-alert";
+import { useDispatch } from "react-redux";
 
 const Product = () => {
-  const [productData, setProductData] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.data.products);
 
   const getProducts = async () => {
     try {
@@ -25,7 +27,7 @@ const Product = () => {
       };
 
       const response = await axiosInstance.get("/products", { headers });
-      setProductData(response.data.data);
+      dispatch({ type: "SET_PRODUCTS", products: response.data.data });
       console.log(token);
     } catch (error) {
       console.log(error.message);
@@ -155,8 +157,8 @@ const Product = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {productData && productData.length > 0 ? (
-                    productData.map((product, index) => (
+                  {product && product.length > 0 ? (
+                    product.map((product, index) => (
                       <tr key={index}>
                         <td>
                           <Badge pill bg="secondary">{product.id ? product.id.slice(0, 8) : ""}</Badge>

@@ -10,12 +10,16 @@ import { useSelector } from "react-redux";
 import withAuth from "../../../hoc/withAuth";
 
 import "./customers.css";
+import { useDispatch } from "react-redux";
 
 const Customer = () => {
   const [customerData, setCustomerData] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const dispatch = useDispatch();
+  const customer = useSelector((state) => state.data.customers);
 
   const token = useSelector((state) => state.auth.token);
 
@@ -25,7 +29,8 @@ const Customer = () => {
         Authorization: `Bearer ${token}`,
       };
       const response = await axiosInstance.get("/customers", { headers });
-      setCustomerData(response.data.data);
+      // setCustomerData(response.data.data);
+      dispatch({ type: "SET_CUSTOMERS", customers: response.data.data });
     } catch (error) {
       console.log(error.message);
     }
@@ -110,7 +115,8 @@ const Customer = () => {
   };
 
   const handleCreateCustomer = (newCustomer) => {
-    setCustomerData([...customerData, newCustomer]);
+    // setCustomerData([...customerData, newCustomer]);
+     
     getCustomers();
   };
 
@@ -147,8 +153,8 @@ const Customer = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {customerData && customerData.length > 0 ? (
-                    customerData.map((customer, index) => (
+                  {customer && customer.length > 0 ? (
+                    customer.map((customer, index) => (
                       <tr key={index}>
                         <td>
                           <Badge pill bg="secondary">{customer.id ? customer.id.slice(0, 8) : ""}</Badge>
