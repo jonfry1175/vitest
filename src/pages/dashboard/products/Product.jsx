@@ -127,7 +127,7 @@ const Product = () => {
 
   return (
     <div>
-      <div className="row">
+      <div className="row text">
         <div className="col-auto">
           <Sidebar />
         </div>
@@ -183,7 +183,7 @@ const Product = () => {
                             }`}
                             onClick={() => handleEditClick(product)}
                             variant="success"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Edit
                           </Button>
@@ -193,7 +193,7 @@ const Product = () => {
                             }`}
                             onClick={() => handleDeleteClick(product.id)}
                             variant="danger"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Delete
                           </Button>

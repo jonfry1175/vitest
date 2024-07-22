@@ -121,7 +121,7 @@ const Customer = () => {
 
   return (
     <>
-      <div className="row">
+      <div className="row text">
         <div className="col-md-auto">
           <Sidebar />
         </div>
@@ -136,7 +136,7 @@ const Customer = () => {
               Create Customer
             </Button>
             <div className="table-responsive mt-3">
-              <Table striped bordered hover>
+              <Table striped bordered hover className="table">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -167,7 +167,7 @@ const Customer = () => {
                             data-testid={`edit-customer-button-${customer.id}`}
                             onClick={() => handleEditClick(customer)}
                             variant="success"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Edit
                           </Button>
@@ -175,7 +175,7 @@ const Customer = () => {
                             data-testid={`delete-customer-button-${customer.id}`}
                             onClick={() => handleDeleteClick(customer.id)}
                             variant="danger"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Delete
                           </Button>
