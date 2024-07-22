@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../../../components/Sidebar";
 import { useEffect } from "react";
 import { axiosInstance } from "../../../lib/axios";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Badge } from "react-bootstrap";
 import { toast } from "sonner";
 import CreateProductModal from "./CreateProductModal";
 import EditProductModal from "./EditProductModal";
@@ -158,10 +158,24 @@ const Product = () => {
                   {productData && productData.length > 0 ? (
                     productData.map((product, index) => (
                       <tr key={index}>
-                        <td>{product.id ? product.id.slice(0, 8) : ""}</td>
-                        <td>{product.name}</td>
-                        <td>{product.price}</td>
-                        <td>{product.type}</td>
+                        <td>
+                          <Badge pill bg="secondary">{product.id ? product.id.slice(0, 8) : ""}</Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="secondary">{product.name}</Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="danger">
+                          {new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                          }).format(product.price)}
+                          </Badge>
+                          
+                        </td>
+                        <td>
+                          <Badge pill bg="secondary">{product.type}</Badge>
+                        </td>
                         <td>
                           <Button
                             data-testid={`edit-product-button-${

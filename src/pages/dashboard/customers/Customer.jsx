@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Badge, Button, Table } from "react-bootstrap";
 import { axiosInstance } from "../../../lib/axios";
 import { confirmAlert } from "react-confirm-alert";
 import { toast } from "sonner";
@@ -150,10 +150,18 @@ const Customer = () => {
                   {customerData && customerData.length > 0 ? (
                     customerData.map((customer, index) => (
                       <tr key={index}>
-                        <td>{customer.id ? customer.id.slice(0, 8) : ""}</td>
-                        <td>{customer.name}</td>
-                        <td>{customer.phoneNumber}</td>
-                        <td>{customer.address}</td>
+                        <td>
+                          <Badge pill bg="secondary">{customer.id ? customer.id.slice(0, 8) : ""}</Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="secondary">{customer.name}</Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="secondary">{customer.phoneNumber}</Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="secondary">{customer.address}</Badge>
+                        </td>
                         <td>
                           <Button
                             data-testid={`edit-customer-button-${customer.id}`}
