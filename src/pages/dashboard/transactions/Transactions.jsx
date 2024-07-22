@@ -152,7 +152,10 @@ const Transactions = () => {
             <Button onClick={() => setShowModalCreate(true)}>
               Tambah Transaksi
             </Button>
-            <div className="table-responsive mt-3">
+            <div
+              style={{ height: "50vh", overflowY: "auto" }}
+              className="table-responsive mt-3"
+            >
               <Table striped bordered hover>
                 <thead className="text-center">
                   <tr>
@@ -163,31 +166,33 @@ const Transactions = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.values(customerDataTransaction).map((customer, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <Badge pill bg="secondary">
-                          {customer.id}
-                        </Badge>
-                      </td>
-                      <td>
-                       <Badge pill bg="success">
-                       <span className="fw-bold">{customer.name}</span>
-                        <br />
-                        {customer.transactionCount} Transaksi
-                       </Badge>
-                      </td>
-                      <td>
-                        <Button
-                          onClick={() => handleClick(customer)}
-                          variant="primary"
-                        >
-                          Detail
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
+                  {Object.values(customerDataTransaction).map(
+                    (customer, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <Badge pill bg="secondary p-3 px-5">
+                            {customer.id}
+                          </Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="success  p-2 px-5">
+                            <span className="fw-bold">{customer.name}</span>
+                            <br />
+                            {customer.transactionCount} Transaksi
+                          </Badge>
+                        </td>
+                        <td>
+                          <Button
+                            onClick={() => handleClick(customer)}
+                            variant="primary "
+                          >
+                            Detail
+                          </Button>
+                        </td>
+                      </tr>
+                    )
+                  )}
                 </tbody>
               </Table>
             </div>
@@ -232,9 +237,9 @@ const Transactions = () => {
                     <td>
                       {transaction.billDetails
                         .reduce((acc, item) => acc + item.price * item.qty, 0)
-                        .toLocaleString('id-ID', {
-                          style: 'currency',
-                          currency: 'IDR',
+                        .toLocaleString("id-ID", {
+                          style: "currency",
+                          currency: "IDR",
                         })}
                     </td>
                   </tr>

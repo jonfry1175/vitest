@@ -135,7 +135,10 @@ const Customer = () => {
             >
               Create Customer
             </Button>
-            <div className="table-responsive mt-3">
+            <div
+              style={{ height: "50vh", overflowY: "auto" }}
+              className="table-responsive mt-3"
+            >
               <Table striped bordered hover className="table">
                 <thead>
                   <tr>
@@ -151,16 +154,24 @@ const Customer = () => {
                     customerData.map((customer, index) => (
                       <tr key={index}>
                         <td>
-                          <Badge pill bg="secondary">{customer.id ? customer.id.slice(0, 8) : ""}</Badge>
+                          <Badge pill bg="secondary  p-2 px-3">
+                            {customer.id ? customer.id.slice(0, 8) : ""}
+                          </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{customer.name}</Badge>
+                          <Badge pill bg="secondary  p-2 px-5">
+                            {customer.name}
+                          </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{customer.phoneNumber}</Badge>
+                          <Badge pill bg="secondary  p-2 px-5">
+                            {customer.phoneNumber}
+                          </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{customer.address}</Badge>
+                          <Badge pill bg="secondary  p-2 px-5">
+                            {customer.address}
+                          </Badge>
                         </td>
                         <td>
                           <Button
