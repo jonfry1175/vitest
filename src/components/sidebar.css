@@ -1,0 +1,58 @@
+ .nav-pills li a:hover {
+    background-color: rgba(67, 67, 204, 0.819);
+}
+
+
+/* sidebar.css */
+.sidebar {
+    transition: width 0.3s;
+    overflow-x: hidden;
+    width: 230px; /* Default width when open */
+  }
+  
+  .sidebar.closed {
+    width: 60px; /* Width when closed */
+  }
+  
+  .sidebar .nav-link {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar.closed .nav-link span {
+    display: none; /* Hide text when sidebar is closed */
+  }
+  
+  .sidebar.open .nav-link span {
+    display: inline; /* Show text when sidebar is open */
+  }
+  
+  .sidebar .dashboard-link {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar.closed .dashboard-link span {
+    display: none; /* Hide text when sidebar is closed */
+  }
+  
+  .sidebar.open .dashboard-link span {
+    display: inline; /* Show text when sidebar is open */
+  }
+  
+  .sidebar .dropdown-toggle span {
+    display: inline; /* Show text in dropdown when sidebar is open */
+  }
+  
+  .sidebar.closed .dropdown-toggle span {
+    display: none; /* Hide text in dropdown when sidebar is closed */
+  }
+  
+  .dropdown-toggle i {
+    display: flex;
+    align-items: center;
+  }
+   
+
+   

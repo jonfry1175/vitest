@@ -1,0 +1,11 @@
+.login-page {
+    background-size: cover; /* Sesuaikan ukuran sesuai kebutuhan */
+  }
+  
+  .login-form-container {
+    background: rgba(255, 255, 255, 0.9); /* Warna latar belakang putih dengan transparansi */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
