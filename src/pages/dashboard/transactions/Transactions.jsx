@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../../../components/Sidebar";
-import { Button, Table, Modal, Form } from "react-bootstrap";
+import { Button, Table, Modal, Form, Badge } from "react-bootstrap";
 import { axiosInstance } from "../../../lib/axios";
 import withAuth from "../../../hoc/withAuth";
 import { useSelector } from "react-redux";
@@ -166,11 +166,17 @@ const Transactions = () => {
                   {Object.values(customerDataTransaction).map((customer, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{customer.id}</td>
                       <td>
-                        <span className="fw-bold">{customer.name}</span>
+                        <Badge pill bg="secondary">
+                          {customer.id}
+                        </Badge>
+                      </td>
+                      <td>
+                       <Badge pill bg="success">
+                       <span className="fw-bold">{customer.name}</span>
                         <br />
                         {customer.transactionCount} Transaksi
+                       </Badge>
                       </td>
                       <td>
                         <Button
