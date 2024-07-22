@@ -129,7 +129,7 @@ const Product = () => {
 
   return (
     <div>
-      <div className="row">
+      <div className="row text">
         <div className="col-auto">
           <Sidebar />
         </div>
@@ -145,7 +145,10 @@ const Product = () => {
             >
               Add Product
             </Button>
-            <div className="table-responsive mt-3 display: none">
+            <div
+              style={{ height: "50vh", overflowY: "auto" }}
+              className="table-responsive mt-3 display: none"
+            >
               <Table>
                 <thead className="text-center">
                   <tr>
@@ -161,22 +164,27 @@ const Product = () => {
                     product.map((product, index) => (
                       <tr key={index}>
                         <td>
-                          <Badge pill bg="secondary">{product.id ? product.id.slice(0, 8) : ""}</Badge>
-                        </td>
-                        <td>
-                          <Badge pill bg="secondary">{product.name}</Badge>
-                        </td>
-                        <td>
-                          <Badge pill bg="danger">
-                          {new Intl.NumberFormat("id-ID", {
-                            style: "currency",
-                            currency: "IDR",
-                          }).format(product.price)}
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {product.id ? product.id.slice(0, 8) : ""}
                           </Badge>
-                          
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{product.type}</Badge>
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {product.name}
+                          </Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="danger  p-2 px-2">
+                            {new Intl.NumberFormat("id-ID", {
+                              style: "currency",
+                              currency: "IDR",
+                            }).format(product.price)}
+                          </Badge>
+                        </td>
+                        <td>
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {product.type}
+                          </Badge>
                         </td>
                         <td>
                           <Button
@@ -185,7 +193,7 @@ const Product = () => {
                             }`}
                             onClick={() => handleEditClick(product)}
                             variant="success"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Edit
                           </Button>
@@ -195,7 +203,7 @@ const Product = () => {
                             }`}
                             onClick={() => handleDeleteClick(product.id)}
                             variant="danger"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Delete
                           </Button>

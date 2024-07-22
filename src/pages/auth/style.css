@@ -10,3 +10,28 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  @media screen and (min-device-width: 300px) and (max-device-width: 600px) {
+    .width-for-min-and-max {
+      display: flex;
+      flex-direction: column;
+      font-size: 10px;
+      grid-template-columns: 1fr;
+      left: 0;
+      top: 0;
+      padding-left: 0;
+      margin-left: 0;
+    }
+    
+    .the-button {
+      font-size: 10px;
+    }
+
+    .text {
+      font-size: 10px;
+    }
+
+    .table {
+      display: flex;
+      flex-direction: column;
+    }
+  }

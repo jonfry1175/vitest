@@ -158,7 +158,10 @@ const Transactions = () => {
             <Button onClick={() => setShowModalCreate(true)}>
               Tambah Transaksi
             </Button>
-            <div className="table-responsive mt-3">
+            <div
+              style={{ height: "50vh", overflowY: "auto" }}
+              className="table-responsive mt-3"
+            >
               <Table striped bordered hover>
                 <thead className="text-center">
                   <tr>
@@ -238,9 +241,9 @@ const Transactions = () => {
                     <td>
                       {transaction.billDetails
                         .reduce((acc, item) => acc + item.price * item.qty, 0)
-                        .toLocaleString('id-ID', {
-                          style: 'currency',
-                          currency: 'IDR',
+                        .toLocaleString("id-ID", {
+                          style: "currency",
+                          currency: "IDR",
                         })}
                     </td>
                   </tr>

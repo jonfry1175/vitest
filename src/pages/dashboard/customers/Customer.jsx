@@ -126,7 +126,7 @@ const Customer = () => {
 
   return (
     <>
-      <div className="row">
+      <div className="row text">
         <div className="col-md-auto">
           <Sidebar />
         </div>
@@ -140,8 +140,11 @@ const Customer = () => {
             >
               Create Customer
             </Button>
-            <div className="table-responsive mt-3">
-              <Table striped bordered hover>
+            <div
+              style={{ height: "50vh", overflowY: "auto" }}
+              className="table-responsive mt-3"
+            >
+              <Table striped bordered hover className="table">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -156,23 +159,31 @@ const Customer = () => {
                     customer.map((customer, index) => (
                       <tr key={index}>
                         <td>
-                          <Badge pill bg="secondary">{customer.id ? customer.id.slice(0, 8) : ""}</Badge>
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {customer.id ? customer.id.slice(0, 8) : ""}
+                          </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{customer.name}</Badge>
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {customer.name}
+                          </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{customer.phoneNumber}</Badge>
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {customer.phoneNumber}
+                          </Badge>
                         </td>
                         <td>
-                          <Badge pill bg="secondary">{customer.address}</Badge>
+                          <Badge pill bg="secondary  p-2 px-2">
+                            {customer.address}
+                          </Badge>
                         </td>
                         <td>
                           <Button
                             data-testid={`edit-customer-button-${customer.id}`}
                             onClick={() => handleEditClick(customer)}
                             variant="success"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Edit
                           </Button>
@@ -180,7 +191,7 @@ const Customer = () => {
                             data-testid={`delete-customer-button-${customer.id}`}
                             onClick={() => handleDeleteClick(customer.id)}
                             variant="danger"
-                            className="mx-2"
+                            className="mx-2 the-button"
                           >
                             Delete
                           </Button>
